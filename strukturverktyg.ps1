@@ -2,7 +2,7 @@
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 # ============================================================
-# Funktion: Skapa-Mappstruktur
+# Funktion: Skapa en mappstruktur
 # Skapar en huvudmapp med undermappar och en loggfil.
 # Tar emot ett namn från användaren som avgör vad huvudmappen ska heta.
 # ============================================================
@@ -15,21 +15,21 @@ function Skapa-Mappstruktur {
     # De undermappar som ska skapas inuti huvudmappen
     $undermappar = @("logs", "scripts", "temp")
 
-    # Hämtar dagens datum – används som filnamn på loggfilen
+    # Hämtar dagens datum som används som filnamn på loggfilen
     $datumFilnamn = Get-Date -Format "yyyy-MM-dd"
 
-    # Hämtar datum och klockslag – används som innehåll i loggfilen
+    # Hämtar datum och klockslag som används som innehåll i loggfilen
     $datumTid = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
     # Bygger ihop den fullständiga sökvägen till loggfilen
     $loggfil = Join-Path -Path $huvudmapp -ChildPath "logs\log-$datumFilnamn.txt"
 
     try {
-        # Skapar huvudmappen – Out-Null döljer den tekniska utskriften från New-Item
+        # Skapar huvudmappen. Out-Null döljer den tekniska utskriften från New-Item
         New-Item -Path $huvudmapp -ItemType Directory | Out-Null
         Write-Host "Skapade huvudmapp: $huvudmapp" -ForegroundColor Green
 
-        # Loopar igenom listan med undermappar och skapar varje en
+        # Loopar igenom listan med undermappar och dem
         foreach ($mapp in $undermappar) {
             $sokvag = Join-Path -Path $huvudmapp -ChildPath $mapp
             New-Item -Path $sokvag -ItemType Directory | Out-Null
@@ -72,7 +72,7 @@ do {
         Write-Host "Mappen finns redan. Välj ett annat namn." -ForegroundColor Red
         $forsokIgen = $true
     } else {
-        # Namnet är ledigt – skapa mappstrukturen och avsluta loopen
+        # Namnet är ledigt, skapar mappstrukturen och avsluta loopen
         Skapa-Mappstruktur -Namn $anvandarInput
         $forsokIgen = $false
     }
