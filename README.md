@@ -51,6 +51,8 @@ Loggfilen skapas automatiskt med dagens datum som filnamn och innehåller en rad
 
 Det svåraste under projektet var att hantera teckenkodning. Svenska tecken som å, ä och ö orsakade fel. Det hade lätt kunnat lösas om jag valt att använda mig av engelska, men vad är det roliga i det?
 
-Det mest intressanta var att se hur enkla byggstenar som variabler, funktioner och loopar sätts ihop till ett skript som faktiskt gör något mer än retunerar 'Hello world' i terminalen. Felhanteringen med try/catch kändes också som ett stort steg. Istället för att skriptet kraschar får användaren ett tydligt meddelande om vad som gick fel. Självklart var det ju också intressant att få lära sig mer om allt. Tidigare har man kanske googlat fram ett skript och bara copy pastat in i terminalen för att få något löst. Här bygger man det ändå från grunden vilket är för jäkla skoj i slutändan.
+Det mest intressanta var att se hur enkla byggstenar som variabler, funktioner och loopar sätts ihop till ett skript som faktiskt gör något mer än retunerar 'Hello world' i terminalen. 
+Felhanteringen med try/catch kändes också som ett stort steg. Istället för att skriptet kraschar får användaren ett tydligt meddelande om vad som gick fel. 
+Självklart var det ju också intressant att få lära sig mer om allt. Tidigare har man kanske googlat fram ett skript och bara copy pastat in i terminalen för att få något löst. Här bygger man det ändå från grunden vilket är för jäkla skoj i slutändan.
 
 
