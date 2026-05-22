@@ -1,4 +1,4 @@
-﻿# Ser till att svenska tecken (å, ä, ö) visas korrekt i terminalen
+# Ser till att svenska tecken (å, ä, ö) visas korrekt i terminalen
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 # ============================================================
@@ -25,11 +25,6 @@ function Skapa-Mappstruktur {
     $loggfil = Join-Path -Path $huvudmapp -ChildPath "logs\log-$datumFilnamn.txt"
 
     try {
-        # Kontrollerar om huvudmappen redan finns och avbryter om så är fallet
-        if (Test-Path -Path $huvudmapp) {
-            throw "Mappen '$huvudmapp' finns redan. Välj ett annat namn."
-        }
-
         # Skapar huvudmappen – Out-Null döljer den tekniska utskriften från New-Item
         New-Item -Path $huvudmapp -ItemType Directory | Out-Null
         Write-Host "Skapade huvudmapp: $huvudmapp" -ForegroundColor Green
@@ -49,7 +44,7 @@ function Skapa-Mappstruktur {
         Write-Host "Klart! Mappstrukturen för '$Namn' är skapad." -ForegroundColor Green
     }
     catch {
-        # Fångar upp fel och visar ett felmeddelande istället för att krascha
+        # Fångar upp fel och visar ett felmeddelande istället för att avlutas
         Write-Host "FEL: $($_.Exception.Message)" -ForegroundColor Red
     }
 }
@@ -64,14 +59,22 @@ Write-Host "   Verktyg för att skapa en mappstruktur" -ForegroundColor Yellow
 Write-Host "======================================" -ForegroundColor Yellow
 Write-Host ""
 
-# Frågar användaren efter ett namn och sparar svaret
-$anvandarInput = Read-Host "Ange ett namn för systemet eller miljön"
+# Loopar tills användaren anger ett namn som fungerar
+do {
+    $anvandarInput = Read-Host "Ange ett namn för huvudmappen"
 
-# Kontrollerar att användaren inte lämnade fältet tomt
-if ([string]::IsNullOrWhiteSpace($anvandarInput)) {
-    Write-Host "Du angav inget namn. Skriptet avslutas." -ForegroundColor Red
-    exit
-}
+    # Kontrollerar att användaren inte lämnade fältet tomt
+    if ([string]::IsNullOrWhiteSpace($anvandarInput)) {
+        Write-Host "Du angav inget namn. Försök igen." -ForegroundColor Red
+        $forsokIgen = $true
+    } elseif (Test-Path (Join-Path (Get-Location) $anvandarInput)) {
+        # Kontrollerar om en mapp med samma namn redan finns
+        Write-Host "Mappen finns redan. Välj ett annat namn." -ForegroundColor Red
+        $forsokIgen = $true
+    } else {
+        # Namnet är ledigt – skapa mappstrukturen och avsluta loopen
+        Skapa-Mappstruktur -Namn $anvandarInput
+        $forsokIgen = $false
+    }
 
-# Anropar funktionen med det namn användaren angav
-Skapa-Mappstruktur -Namn $anvandarInput
+} while ($forsokIgen)
