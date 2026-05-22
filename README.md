@@ -1,6 +1,6 @@
-# strukturverktyg
+# Strukturverktyg
 
-Ett PowerShell-skript som automatiskt skapar en standardiserad mappstruktur för ett valfritt system eller miljö.
+Ett PowerShell-skript som automatiskt skapar en mappstruktur för ett valfritt system eller miljö.
 
 ## Vad gör skriptet?
 
