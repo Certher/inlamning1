@@ -38,6 +38,7 @@ Loggfilen skapas automatiskt med dagens datum som filnamn och innehåller en rad
    & "C:\Scripts\strukturverktyg.ps1" 
    ```
    Ändra namn och sökväg till där du valt att spara skriptet.
+
    
    
 5. Ange ett namn när skriptet frågar och tryck Enter.
