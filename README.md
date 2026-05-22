@@ -37,7 +37,8 @@ Loggfilen skapas automatiskt med dagens datum som filnamn och innehåller en rad
    ```powershell
    & "C:\Scripts\strukturverktyg.ps1" 
    ```
-   Ändra sökväg till där skriptet ligger
+   Ändra namn och sökväg till där du valt att spara skriptet.
+   
    
 5. Ange ett namn när skriptet frågar och tryck Enter.
 
