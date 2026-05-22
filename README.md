@@ -1,10 +1,10 @@
 # Strukturverktyg
 
-Ett PowerShell-skript som automatiskt skapar en mappstruktur för ett valfritt system eller miljö.
+Ett PowerShell-skript som automatiskt skapar en mappstruktur.
 
 ## Vad gör skriptet?
 
-När du kör skriptet får du ange ett namn — till exempel ett kundsystem eller en miljö. Skriptet skapar då en huvudmapp med det namnet och tre undermappar inuti:
+När du kör skriptet får du ange ett namn. Skriptet skapar då en huvudmapp med det namnet och tre undermappar inuti:
 
 ```
 <namn>/
@@ -18,7 +18,7 @@ Loggfilen skapas automatiskt med dagens datum som filnamn och innehåller en rad
 
 ## Hur kör man skriptet?
 
-### Om du har fått .ps1-filen direkt
+### Om du har .ps1-filen på datorn
 
 1. Kör detta kommando en gång i terminalen om du aldrig kört PowerShell-skript tidigare:
    ```powershell
@@ -35,10 +35,11 @@ Loggfilen skapas automatiskt med dagens datum som filnamn och innehåller en rad
 
 3. Öppna skriptet i VS Code och tryck **Run**, eller kör det via terminalen:
    ```powershell
-   & "C:\Scripts\strukturverktyg.ps1"
+   & "C:\Scripts\strukturverktyg.ps1" 
    ```
-
-4. Ange ett namn när skriptet frågar och tryck Enter.
+   Ändra sökväg till där skriptet ligger
+   
+5. Ange ett namn när skriptet frågar och tryck Enter.
 
 > **OBS:** Om en mapp med samma namn redan finns avbryts skriptet med ett felmeddelande.
 
@@ -62,6 +63,8 @@ Kör sedan `Set-ExecutionPolicy` enligt steg 1 ovan och fortsätt därifrån.
 
 ## Vad var svårt eller intressant?
 
-Det svåraste under projektet var att hantera teckenkodning — svenska tecken som å, ä och ö kan orsaka fel om filen inte sparas i rätt format (UTF-8). Det är något som lätt förbises men som snabbt ställer till problem när skriptet körs.
+Det svåraste under projektet var att hantera teckenkodning. Svenska tecken som å, ä och ö orsakade fel. Det hade lätt kunnat lösas om jag valt att använda mig av engelska, men vad är det roliga i det?
 
-Det mest intressanta var att se hur enkla byggstenar som variabler, funktioner och loopar sätts ihop till ett skript som faktiskt gör något användbart. Felhanteringen med try/catch kändes också som ett stort steg mot att skriva professionell kod — istället för att skriptet kraschar får användaren ett tydligt meddelande om vad som gick fel.
+Det mest intressanta var att se hur enkla byggstenar som variabler, funktioner och loopar sätts ihop till ett skript som faktiskt gör något mer än retunerar 'Hello world' i terminalen. Felhanteringen med try/catch kändes också som ett stort steg. Istället för att skriptet kraschar får användaren ett tydligt meddelande om vad som gick fel. Självklart var det ju också intressant att få lära sig mer om allt. Tidigare har man kanske googlat fram ett skript och bara copy pastat in i terminalen för att få något löst. Här bygger man det ändå från grunden vilket är för jäkla skoj i slutändan.
+
+
