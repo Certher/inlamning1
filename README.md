@@ -26,7 +26,7 @@ Loggfilen skapas automatiskt med dagens datum som filnamn och innehåller en rad
    ```
    Svara **J** eller **Y** när terminalen frågar.
 
-   > **Varför krävs det här?** Windows blockerar körning av PowerShell-skript som standard. Det är en säkerhetsinställning som förhindrar att skript körs av misstag eller av illasinnade program. `-Scope CurrentUser` betyder att du bara ändrar inställningen för ditt eget användarkonto — inte för hela datorn. `RemoteSigned` betyder att skript du själv skrivit får köras fritt, men skript som laddats ner från internet måste vara digitalt signerade. Det är ett engångssteg och behöver inte göras igen.
+   > **Varför krävs det här?** Windows blockerar körning av PowerShell-skript som standard. Det är en säkerhetsinställning som förhindrar att skript körs av misstag eller av illasinnade program. `-Scope CurrentUser` betyder att du bara ändrar inställningen för ditt eget användarkonto, inte för hela datorn. `RemoteSigned` betyder att skript du själv skrivit får köras fritt, men skript som laddats ner från internet måste vara digitalt signerade. Det är ett engångssteg och behöver inte göras igen.
 
 2. Navigera till den mapp där du vill att mappstrukturen skapas:
    ```powershell
@@ -42,22 +42,6 @@ Loggfilen skapas automatiskt med dagens datum som filnamn och innehåller en rad
 5. Ange ett namn när skriptet frågar och tryck Enter.
 
 > **OBS:** Om en mapp med samma namn redan finns avbryts skriptet med ett felmeddelande.
-
----
-
-### Om du skapar filen från scratch (t.ex. från GitHub)
-
-Om du inte har filen utan vill skapa den själv genom att kopiera koden, kör följande i terminalen. Det säkerställer att filen sparas med rätt teckenkodning så att svenska tecken fungerar korrekt:
-
-```powershell
-$kod = @'
-... (klistra in skriptkoden här)
-'@
-
-[System.IO.File]::WriteAllText("C:\Scripts\strukturverktyg.ps1", $kod, [System.Text.Encoding]::UTF8)
-```
-
-Kör sedan `Set-ExecutionPolicy` enligt steg 1 ovan och fortsätt därifrån.
 
 ---
 
